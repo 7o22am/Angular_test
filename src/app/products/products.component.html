@@ -1,0 +1,99 @@
+<div>
+    <img [src]="StoreLogo" alt="Store Logo" width="200px" height="300px" style="padding: 20px;">
+    <h1 style="display:inline-block;">{{ StoreName |uppercase }}</h1>
+    <h3 *ngIf="Discount == 'Discount'">We offer an explicit discount of: {{ Discount }} {{Tenpercent | percent}}</h3>
+
+    <p class="font-monospace"> {{NameClient}}</p>
+</div>
+
+<br>
+<div>
+    <input [(ngModel)]='NameClient' type="text" class="input-group-text">
+</div>
+
+
+<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+    <option selected>Open this select menu</option>
+    <option *ngFor="let category of CategoryList">{{ category.ID }} - {{ category.Name }}</option>
+
+</select>
+
+<br>
+
+<table *ngIf="!IsPurchased; else thanks" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Product Image</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of Products">
+            <td>{{ product.ID }}</td>
+            <td>{{ product.Name }}</td>
+            <td>{{ product.Img }}</td>
+            <td>{{ product.Price }}</td>
+            <td>{{ product.Quantity }}</td>
+
+        </tr>
+    </tbody>
+</table>
+
+<br> <br>
+
+
+<ng-template #thanks>
+    <div>
+        <p>Thanks for purchasing from our Store {{NameClient}}</p>
+    </div>
+</ng-template>
+
+<div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn btn-primary" (click)="HiddTable()"> Buy</button>
+</div>
+
+<br>
+
+<div class="input-group mb-3">
+    <input #myInput type="text" class="form-control" placeholder="Get Product By ID" aria-label="Recipient's username"
+        aria-describedby="button-addon2">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+        (click)="GetProdectById(myInput.value)">Get</button>
+</div>
+
+<table class="table table-striped" [style.visibility]="visability">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Product Image</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ ProductsByID.ID }}</td>
+            <td>{{ ProductsByID.Name }}</td>
+            <td>{{ ProductsByID.Img }}</td>
+            <td>{{ ProductsByID.Price }}</td>
+            <td>{{ ProductsByID.Quantity }}</td>
+
+        </tr>
+    </tbody>
+</table>
+<br><br>
+<!-- <div class="d-grid gap-2 col-6 mx-auto">
+
+    <button class="btn btn-primary" (click)="renderValues()">Click to get Products From ProductList</button>
+</div> -->
+
+
+<div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn btn-primary" (click)="GoToProductsWithDiscount()"> Products with discount</button>
+    <button class="btn btn-primary" (click)="GoToProductsWithOutDiscount()"> product without discounts</button>
+</div>
+<router-outlet></router-outlet>
