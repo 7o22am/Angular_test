@@ -12,6 +12,7 @@ import { ProductsWithOutDiscountComponent } from './products-with-out-discount/p
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthGuard } from './guardauth.service';
+import { NotesComponent } from './notes/notes.component';
 const routes: Routes = [
   {path:'',component:AppComponent},
   {path:'Home',component:HomeComponent, canActivate: [AuthGuard]},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   { path:'Comments/:id', component:CommentsComponent},
+  { path:'Notes', component:NotesComponent},
   {path:'**' , component:PageNotFoundComponent}
 ];
 

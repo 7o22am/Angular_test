@@ -1,25 +1,26 @@
-<div class="container">
-    <form #userForm="ngForm" novalidate (ngSubmit)="onSubmit()">
-        <br>
-        <div class="form-group">
-            <label>Email :</label>
-            <input type="email" required [class.is-invalid]="email.invalid && email.touched"
-                [(ngModel)]="userModel.email" name="txtEmail" #email="ngModel" class="form-control">
-            <small class="text-danger" *ngIf="email.invalid && email.touched">Email is required</small>
-        </div>
 
-        <div class="form-group">
-            <label>Password :</label>
-            <input required [class.is-invalid]="password.invalid && password.touched"  type="password"
-                [(ngModel)]="userModel.password" name="txtpassword" #password="ngModel"   class="form-control">
-            <small class="text-danger" *ngIf="password.invalid && password.touched">Password is required</small>
-            
-        </div>
+<div  class="container">
+    <form [formGroup]="LoginForm" novalidate (ngSubmit)="onSubmit()" >
+ 
         
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" [class.is-invalid]="LoginForm.get('email')?.touched && LoginForm.get('email')?.invalid" class="form-control" formControlName="email" >
+            <small class="text-danger" *ngIf="LoginForm.get('email')?.touched && LoginForm.get('email')?.invalid">Email is required</small>
+        </div>
+    
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" [class.is-invalid]="LoginForm.get('password')?.touched && LoginForm.get('password')?.invalid"formControlName="password" class="form-control"> 
+            <small class="text-danger" *ngIf="LoginForm.get('password')?.touched && LoginForm.get('password')?.invalid">password is required</small>
+
+        </div>
+    
+         
         <br><br>
-        <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid" 
-        [ngClass]="{'btn-danger': !userForm.form.valid, 'btn-success': userForm.form.valid}">
-            Login
-          </button>
+        <button type="submit" class="btn btn-primary" [disabled]="!LoginForm.valid"
+        [ngClass]="{'btn-danger': !LoginForm.valid, 'btn-success': LoginForm.valid}">
+        Login
+    </button>
     </form>
-</div>
+  </div>
