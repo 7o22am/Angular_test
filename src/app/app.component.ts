@@ -12,10 +12,7 @@ export class AppComponent implements OnInit {
   messageFromChild:any;
   @ViewChild(ProductsComponent) Prodect? :ProductsComponent;
 
-  ngAfterViewInit()
-  {
-    this.Prodect?.WhoAmI();
-  }
+  
  ngOnInit(): void {
    
   }

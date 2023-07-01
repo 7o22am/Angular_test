@@ -1,16 +1,17 @@
- 
-  
-<div *ngFor="let user of users" class="row">
-    <div class="card" style="width: 18rem;" class="col-sm-6 mb-3 mb-sm-0">
-        <img [src]="image" class="card-img-top" alt="...">
-        <div class="card-body">
-          {{user.name}}<br>
-          {{user.username}}<br>
-          {{user.email}}<br>
-        </div>
-      </div>
-
-</div>
-
-
- 
+<table class="table w-75 py-5 mx-auto">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>UserName</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users ; let i= index">
+      <td>{{i+1}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+    </tr>
+  </tbody>
+</table>

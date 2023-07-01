@@ -1,5 +1,5 @@
 
-<div  class="container">
+ <div  class="container py-5">
     <form [formGroup]="LoginForm" novalidate (ngSubmit)="onSubmit()" >
  
         
@@ -9,7 +9,7 @@
             <small class="text-danger" *ngIf="LoginForm.get('email')?.touched && LoginForm.get('email')?.invalid">Email is required</small>
         </div>
     
-        <div class="form-group">
+        <div class="form-group py-2">
             <label>Password</label>
             <input type="password" [class.is-invalid]="LoginForm.get('password')?.touched && LoginForm.get('password')?.invalid"formControlName="password" class="form-control"> 
             <small class="text-danger" *ngIf="LoginForm.get('password')?.touched && LoginForm.get('password')?.invalid">password is required</small>
